@@ -10,10 +10,10 @@ lang: en
 
 So far, we have followed the state management conventions recommended by React. We have placed the state and the methods for handling it to [the root component](https://reactjs.org/docs/lifting-state-up.html) of the application. The state and its handler methods have then been passed to other components with props. This works up to a certain point, but when applications grow larger, state management becomes challenging. 
 
-### Flux-architecture
+### Flux architecture
 
 
-Facebook developed the [Flux](https://facebook.github.io/flux/docs/in-depth-overview/)- architecture to make state management easier. In Flux, the state is separated completely from the React-components into its own <i>stores</i>.
+Facebook developed the [Flux](https://facebook.github.io/flux/docs/in-depth-overview/) architecture to make state management easier. In Flux, the state is separated completely from the React-components into its own <i>stores</i>.
 State in the store is not changed directly, but with different <i>actions</i>.
 
 
@@ -30,7 +30,7 @@ Flux offers a standard way for how and where the application's state is kept and
 
 ### Redux
 
-Facebook has an implementation for Flux, but we will be using the [Redux](https://redux.js.org) - library. It works with the same principle, but is a bit simpler. Facebook also uses Redux now instead of their original Flux. 
+Facebook has an implementation for Flux, but we will be using the [Redux](https://redux.js.org) library. It works with the same principle, but is a bit simpler. Facebook also uses Redux now instead of their original Flux. 
 
 
 We will get to know Redux by implementing a counter application yet again: 
@@ -51,7 +51,7 @@ As in Flux, in Redux the state is also stored in a [store](https://redux.js.org/
 The whole state of the application is stored into <i>one</i> JavaScript-object in the store. Because our application only needs the value of the counter, we will save it straight to the store. If the state was more complicated, different things in the state would be saved as separate fields of the object. 
 
 
-The state of the store is changed with [actions](https://redux.js.org/basics/actions). Actions are objects, which have at least a field determining the <i>type</i> of the action. 
+The state of the store is changed with [actions](https://redux.js.org/basics/actions). Actions are objects which have at least a field determining the <i>type</i> of the action. 
 Our application needs for example the following action: 
 
 ```js
@@ -87,10 +87,10 @@ const counterReducer = (state, action) => {
 The first parameter is the <i>state</i> in the store. Reducer returns a <i>new state</i> based on the actions type. 
 
 
-Let's change the code a bit. It is customary to use the [switch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) -command instead of ifs in a reducer. 
+Let's change the code a bit. It is customary to use the [switch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) command instead of ifs in a reducer. 
 
 
-Let's also define a [default value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters) of 0 for the parameter <i>state</i>. Now the reducer works even if the store -state has not been primed yet. 
+Let's also define a [default value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Default_parameters) of 0 for the parameter <i>state</i>. Now the reducer works even if the store state has not been primed yet. 
 
 ```js
 const counterReducer = (state = 0, action) => {
@@ -102,13 +102,13 @@ const counterReducer = (state = 0, action) => {
     case 'ZERO':
       return 0
     default: // if none of the above matches, code comes here
-    return state
+      return state
   }
 }
 ```
 
 
-Reducer is never supposed to be called directly from the applications code. Reducer is only given as a parameter to the _createStore_-function which creates the store: 
+Reducer is never supposed to be called directly from the applications code. Reducer is only given as a parameter to the _createStore_ function which creates the store: 
 
 ```js
 import { createStore } from 'redux'
@@ -131,7 +131,7 @@ store.dispatch({type: 'INCREMENT'})
 You can find out the state of the store using the method [getState](https://redux.js.org/api/store#getstate).
 
 
-For example the following code: 
+For example, the following code: 
 
 ```js
 const store = createStore(counterReducer)
@@ -155,7 +155,7 @@ would print the following to the console
 </pre>
 
 
-because at first the state of the store is 0. After three <i>INCREMENT</i>-actions the state is 3. In the end, after <i>ZERO</i> and <i>DECREMENT</i> actions, the state is -1.
+because at first the state of the store is 0. After three <i>INCREMENT</i> actions the state is 3. In the end, after the <i>ZERO</i> and <i>DECREMENT</i> actions, the state is -1.
 
 
 The third important method the store has is [subscribe](https://redux.js.org/api/store#subscribelistener), which is used to create callback functions the store calls when its state is changed.
@@ -201,7 +201,7 @@ would cause the following to be printed
 
 
 
-The code of our counter application is the following. All of the code has been written in the same file, so <i>store</i> is straight available for the React-code. We will get to know better ways to structure React/Redux-code later.
+The code of our counter application is the following. All of the code has been written in the same file, so <i>store</i> is available straight away for the React code. We will get to know better ways to structure React/Redux code later.
 
 ```js
 import React from 'react'
@@ -258,18 +258,18 @@ store.subscribe(renderApp)
 
 
 There are a few notable things in the code. 
-<i>App</i> renders the value of the counter by asking it from the store with the method _store.getState()_. The actionhandlers of the buttons <i>dispatch</i> the right actions to the store. 
+<i>App</i> renders the value of the counter by asking it from the store with the method _store.getState()_. The action handlers of the buttons <i>dispatch</i> the right actions to the store. 
 
 
 When the state in the store is changed, React is not able to automatically rerender the application. Thus we have registered a function _renderApp_, which renders the whole app, to listen for changes in the store with the  _store.subscribe_ method. Note that we have to immediately call the _renderApp_ method. Without the call the first rendering of the app would never happen. 
 
-### Redux-notes
+### Redux notes
 
 
 Our aim is to modify our note application to use Redux for state management. However, let's first cover a few key concepts through a simplified note application. 
 
 
-The first version of our application is the following
+The first version of our application is the following:
 
 ```js
 const noteReducer = (state = [], action) => {
@@ -349,13 +349,13 @@ const noteReducer = (state = [], action) => {
 ```
 
 
-The state is now an Array. <i>NEW\_NOTE</i>- type actions cause a new note to be added to the state with the [push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) method. 
+The state is now an Array. <i>NEW\_NOTE</i>-type actions cause a new note to be added to the state with the [push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) method. 
 
 
 The application seems to be working, but the reducer we have declared is bad. It breaks the [basic assumption](https://github.com/reactjs/redux/blob/master/docs/basics/Reducers.md#handling-actions) of Redux reducer that reducers must be [pure functions](https://en.wikipedia.org/wiki/Pure_function).
 
 
-Pure functions are such, that they <i>do not cause any side effects</i> and they must always return the same response when called with the same parameters. 
+Pure functions are such that they <i>do not cause any side effects</i> and they must always return the same response when called with the same parameters. 
 
 
 We added a new note to the state with the method _state.push(action.data)_ which <i>changes</i> the state of the state-object. This is not allowed. The problem is easily solved by using the [concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) method, which creates a <i>new array</i>, which contains all the elements of the old array and the new element: 
@@ -374,7 +374,7 @@ const noteReducer = (state = [], action) => {
 A reducer state must be composed of [immutable](https://en.wikipedia.org/wiki/Immutable_object) objects. If there is a change in the state, the old object is not changed, but it is <i>replaced with a new, changed, object</i>. This is exactly what we did with the new reducer: the old array is replaced with the new. 
 
 
-Let's expand our reducer so that it can handle the change of a notes importance: 
+Let's expand our reducer so that it can handle the change of a note's importance: 
 
 ```js
 {
@@ -386,12 +386,12 @@ Let's expand our reducer so that it can handle the change of a notes importance:
 ```
 
 
-Since we do not have any code which uses this functionality yet, we are expanding the reducer in the 'test driven' way.
+Since we do not have any code which uses this functionality yet, we are expanding the reducer in the 'test-driven' way.
 Let's start by creating a test for handling the action <i>NEW\_NOTE</i>.
 
 
 To make testing easier, we'll first move the reducer's code to its own module to file <i>src/reducers/noteReducer.js</i>. We'll also add the library [deep-freeze](https://github.com/substack/deep-freeze), which can be used to ensure that the reducer has been correctly defined as a immutable function. 
-Let's install the library as a development dependency
+Let's install the library as a development dependency:
 
 ```js
 npm install --save-dev deep-freeze
@@ -426,7 +426,7 @@ describe('noteReducer', () => {
 ```
 
 
-The <i>deepFreeze(state)</i> command ensures that the reducer does not change the state of the store given to it as a parameter. If the reducer uses the _push_ command to manipulate the state, the test will not pass
+The <i>deepFreeze(state)</i> command ensures that the reducer does not change the state of the store given to it as a parameter. If the reducer uses the _push_ command to manipulate the state, the test will not pass:
 
 ![](../../images/6/2.png)
 
@@ -484,7 +484,7 @@ So the following action
 has to change the importance of the note with the id 2.
 
 
-The reducer is expanded as follows
+The reducer is expanded as follows:
 
 ```js
 const noteReducer = (state = [], action) => {
@@ -519,7 +519,7 @@ const noteToChange = state.find(n => n.id === id)
 ```
 
 
-then we create a new object, which is a <i>copy</i> of the original note, only the value of the <i>important</i> field has been changed to the opposite of what it was: 
+Then we create a new object, which is a <i>copy</i> of the original note. Only the value of the <i>important</i> field has been changed to the opposite of what it was: 
 
 ```js
 const changedNote = { 
