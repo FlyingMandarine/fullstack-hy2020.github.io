@@ -168,7 +168,7 @@ const reducer = combineReducers({
 
 const store = createStore(reducer)
 
-console.log(store.getState())
+console.log(store.getState()) // highlight-line
 
 ReactDOM.render(
   /*
@@ -291,7 +291,7 @@ const notes = useSelector(state => state)
 ```
 
 <!-- Nyt siis palautetaan tilasta ainoastaan sen kenttä <i>notes</i> -->
-And now it returns only its field <i>notes</i>
+And now it returns only its field <i>notes</i>:
 
 ```js
 const notes = useSelector(state => state.notes)
@@ -305,7 +305,7 @@ import React from 'react'
 import { filterChange } from '../reducers/filterReducer'
 import { useDispatch } from 'react-redux'
 
-const VisibilityFilter = (props) => {
+const VisibilityFilter = () => {
   const dispatch = useDispatch()
 
   return (
@@ -335,7 +335,7 @@ const VisibilityFilter = (props) => {
 export default VisibilityFilter
 ```
 
-With the new component <i>App</i> can be simplified as follows:
+The new component <i>App</i> can be simplified as follows:
 
 ```js
 import React from 'react'
@@ -414,21 +414,22 @@ There is a slight cosmetic flaw in our application. Even though the filter is se
 
 ### Redux DevTools
 
-There is an extension [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd) that can be installed on Chrome, in which the state of the Redux-store and the action that changes it can be monitored from the console of the browser.
+There is an extension that can be installed on Chrome, [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd). It allows the state of the Redux store and the action that changes it to be monitored from the console of the browser.
 
 When debugging, in addition to the browser extension we also have the software library [redux-devtools-extension](https://www.npmjs.com/package/redux-devtools-extension). Let's install it using the command:
 
 ```js
-npm install --save redux-devtools-extension
+npm install --save-dev redux-devtools-extension
 ```
 
-We'll have to slightly change the definition of the store to get the library up and running:
+We'll have to slightly change the definition of the store in `index.js` to get the library up and running:
 
 ```js
 // ...
 import { createStore, combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension' // highlight-line
 
+// ...
 import noteReducer from './reducers/noteReducer'
 import filterReducer from './reducers/filterReducer'
 
@@ -443,23 +444,23 @@ const store = createStore(
   composeWithDevTools()
   // highlight-end
 )
-
-export default store
+      
+// ...
 ```
 
 Now when you open the console, the <i>redux</i> tab looks like this:
 
 ![](../../images/6/11ea.png)
 
-The effect of each to the store can be easily observed 
+The effect of each action to the store can be easily observed:
 
 ![](../../images/6/12ea.png)
 
-It's also possible to dispatch actions to the store using the console
+It's also possible to dispatch actions to the store using the console:
 
 ![](../../images/6/13ea.png)
 
-You can find the code for our current application in its entirety in the <i>part6-2</i> branch of [this Github repository](https://github.com/fullstack-hy2020/redux-notes/tree/part6-2).
+You can find the code for our current application in its entirety in the <i>part6-2</i> branch of [this Github repository](https://github.com/fullstack-hy/redux-notes/tree/part6-2).
 
 </div>
 
@@ -474,8 +475,8 @@ Let's continue working on the anecdote application using redux that we started i
 
 #### 6.9 Better anecdotes, step7
 
-<!-- Ota sovelluksessasi käyttöön React dev tools. Siirrä Redux-storen määrittely omaan tiedostoon <i>store.js</i>. -->
-Start using React dev tools. Move defining the Redux-store into its own file <i>store.js</i>.
+<!-- Ota sovelluksessasi käyttöön Redux DevTools. Siirrä Redux-storen määrittely omaan tiedostoon <i>store.js</i>. -->
+Start using Redux DevTools. Move defining the Redux-store into its own file <i>store.js</i>.
 
 #### 6.10 Better anecdotes, step8
 
@@ -501,14 +502,14 @@ export default Notification
 ```
 
 
-Extend the component so that it renders the message stored in the redux store, making the component to take the form:
+Extend the component so that it renders the message stored in the redux store, making the component take the form:
 
 ```js
 import React from 'react'
 import { useSelector } from 'react-redux' // highlight-line
 
 const Notification = () => {
-  const notification = useSelector(/*s omething here */) // highlight-line
+  const notification = useSelector(/* something here */) // highlight-line
   const style = {
     border: 'solid',
     padding: 10,
