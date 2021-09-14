@@ -543,7 +543,7 @@ state.map(note =>
 Because we now have quite good tests for the reducer, we can refactor the code safely. 
 
 
-Adding a new note creates the state it returns with Arrays _concat_-function. Let's take a look at how we can achieve the same by using the JavaScript [array spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) -syntax:
+Adding a new note creates the state it returns with Array's _concat_ function. Let's take a look at how we can achieve the same by using the JavaScript [array spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) syntax:
 
 ```js
 const noteReducer = (state = [], action) => {
@@ -553,13 +553,13 @@ const noteReducer = (state = [], action) => {
     case 'TOGGLE_IMPORTANCE':
       // ...
     default:
-    return state
+      return state
   }
 }
 ```
 
 
-The spread -syntax works as follows. If we declare
+The spread syntax works as follows. If we declare
 
 ```js
 const numbers = [1, 2, 3]
@@ -576,7 +576,7 @@ const numbers = [1, 2, 3]
 and the result is an array `[1, 2, 3, 4, 5]`.
 
 
-If we would have placed the array to another array without the spread
+If we had passed the array to another array without the spread
 
 ```js
 [numbers, 4, 5]
@@ -586,7 +586,7 @@ If we would have placed the array to another array without the spread
 the result would have been `[ [1, 2, 3], 4, 5]`.
 
 
-When we take elements from an array by [destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), a similar looking syntax is used to <i>gather</i> the rest of the elements: 
+When we take elements from an array by [destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), a similar-looking syntax is used to <i>gather</i> the rest of the elements: 
 
 ```js
 const numbers = [1, 2, 3, 4, 5, 6]
@@ -708,7 +708,7 @@ describe('unicafe reducer', () => {
 **Implement the reducer and its tests.**
 
 
-In the tests, make sure that the reducer is an <i>immutable function</i> with the <i>deep-freeze</i>-library. 
+In the tests, make sure that the reducer is an <i>immutable function</i> with the <i>deep-freeze</i> library. 
 Ensure that the provided first test passes, because Redux expects that the reducer returns a sensible original state when it is called so that the first parameter <i>state</i>, which represents the previous state, is 
 <i>undefined</i>.
 
@@ -716,7 +716,7 @@ Ensure that the provided first test passes, because Redux expects that the reduc
 Start by expanding the reducer so that both tests pass. Then add the rest of the tests, and finally the functionality which they are testing. 
 
 
-A good model for the reducer is the [redux-notes](/en/part6/flux_architecture_and_redux#pure-functions-immutable)
+A good model for the reducer is the [redux notes](/en/part6/flux_architecture_and_redux#pure-functions-immutable)
 example above. 
 
 #### 6.2: unicafe revisited, step2
@@ -833,7 +833,7 @@ toggleImportance = (id) => {
 
 We begin to notice that, even in applications as simple as ours, using Redux can simplify the frontend code. However, we can do a lot better. 
 
-It is actually not necessary for React-components to know the Redux action types and forms. 
+It is actually not necessary for React components to know the Redux action types and forms. 
 Let's separate creating actions into their own functions: 
 
 ```js
@@ -858,7 +858,7 @@ const toggleImportanceOf = (id) => {
 
 Functions that create actions are called [action creators](https://redux.js.org/advanced/async-actions#synchronous-action-creators).
 
-The <i>App</i> component does not have to know anything about the inner representation of the actions anymore, it just gets the right action by calling the creator-function: 
+The <i>App</i> component does not have to know anything about the inner representation of the actions anymore, it just gets the right action by calling the creator function: 
 
 ```js
 const App = () => {
@@ -886,7 +886,7 @@ Aside from the reducer, our application is in one file. This is of course not se
 Now the question is, how can the <i>App</i> access the store after the move? And more broadly, when a component is composed of many smaller components, there must be a way for all of the components to access the store. 
 
 <!-- Tapoja välittää redux-store sovelluksen komponenteille on useita, tutustutaan ensin ehä uusimpaan ja helpoimpaan tapaan [react-redux](https://react-redux.js.org/)-kirjaston tarjoamaan [hooks](https://react-redux.js.org/api/hooks)-rajapintaan. -->
-There are multiple ways to share the redux-store with components. First we will look into the newest, and possibly the easiest way using the [hooks](https://react-redux.js.org/api/hooks)-api of the [react-redux](https://react-redux.js.org/) library.
+There are multiple ways to share the redux store with components. First we will look into the newest, and possibly the easiest way using the [hooks](https://react-redux.js.org/api/hooks) api of the [react redux](https://react-redux.js.org/) library.
 
 
 <!-- Asennetaan react-redux -->
@@ -921,11 +921,11 @@ ReactDOM.render(
 ```
 
 <!-- Uutta tässä on se, että sovellus on määritelty react redux -kirjaston tarjoaman [Provider](https://github.com/reactjs/react-redux/blob/master/docs/api.md#provider-store)-komponentin lapsena ja että sovelluksen käyttämä store on annettu Provider-komponentin attribuutiksi <i>store</i>.  -->
-Note, that the application is now defined as a child of a [Provider](https://react-redux.js.org/api/provider) -component provided by the react redux library.
+Note that the application is now defined as a child of a [Provider](https://react-redux.js.org/api/provider) component provided by the react redux library.
 The application's store is given to the Provider as its attribute <i> 
 store</i>.
 
-Defining the action creators has been moved to the file <i>reducers/noteReducer.js</i> where the reducer is defined. File looks like this:
+Defining the action creators has been moved to the file <i>reducers/noteReducer.js</i> where the reducer is defined. The file looks like this:
 
 ```js
 const noteReducer = (state = [], action) => {
@@ -956,7 +956,7 @@ export const toggleImportanceOf = (id) => { // highlight-line
 export default noteReducer
 ```
 
-If the application has many components which need the store, the <i>App</i>-component must pass <i>store</i> as props to all of those components.
+If the application has many components which need the store, the <i>App</i> component must pass <i>store</i> as props to all of those components.
 
 The module now has multiple [export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) commands. 
 
@@ -979,14 +979,14 @@ export const toggleImportanceOf = (id) => {
 ```
 
 
-Normally (not as defaults) exported functions can be imported with the curly brace syntax:
+Normally, functions that are not exported as defaults can be imported with the curly brace syntax:
 
 ```js
 import { createNote } from './../reducers/noteReducer'
 ```
 
 <!-- Komponentin <i>App</i> koodi  -->
-Code for the <i>App</i> component
+Code for the <i>App</i> component:
 
 ```js
 import React from 'react'
@@ -1035,7 +1035,7 @@ export default App
 ```
 
 <!-- Komponentin koodissa on muutama mielenkiintoinen seikka. Aiemmin koodi hoiti actioinen dispatchaamisen kutsumalla redux-storen metodia dispatch: -->
-There are a few things to note in the code. Previously the code dispatched actions by calling the dispatch method of the redux-store:
+There are a few things to note in the code. Previously the code dispatched actions by calling the dispatch method of the redux store:
 
 ```js
 store.dispatch({
@@ -1045,7 +1045,7 @@ store.dispatch({
 ```
 
 <!-- Nyt sama tapahtuu [useDispatch](https://react-redux.js.org/api/hooks#usedispatch)-hookin avulla saatavan <i>dispatch</i>-funktion avulla: -->
-Now it does it with the <i>dispatch</i>-function from the [useDispatch](https://react-redux.js.org/api/hooks#usedispatch) -hook.
+Now it does it with the <i>dispatch</i> function from the [useDispatch](https://react-redux.js.org/api/hooks#usedispatch) hook.
 
 ```js
 import { useSelector, useDispatch } from 'react-redux'  // highlight-line
@@ -1063,12 +1063,12 @@ const App = () => {
 ```
 
 <!-- React-redux-kirjaston tarjoama <i>useDispatch</i>-hook siis tarjoaa mille tahansa React-komponentille pääsyn tiedostossa <i>index.js</i> määritellyn redux-storen dispatch-funktioon, jonka avulla komponentti pääsee tekemään muutoksia redux-storen tilaan. -->
-The <i>useDispatch</i>-hook provides any React component access to the dispatch-function of the redux-store defined in <i>index.js</i>.
-This allows all components to make changes to the state of the redux-store.
+The <i>useDispatch</i> hook provides any React component access to the dispatch function of the redux store defined in <i>index.js</i>.
+This allows all components to make changes to the state of the redux store.
 
 
 <!-- Storeen talletettuihin muistiinpanoihin komponentti pääsee käsiksi react-redux-kirjaston [useSelector](https://react-redux.js.org/api/hooks#useselector)-hookin kautta: -->
-The component can access the notes stored in the store with the [useSelector](https://react-redux.js.org/api/hooks#useselector)-hook of the react-redux library.
+The component can access the notes stored in the store with the [useSelector](https://react-redux.js.org/api/hooks#useselector) hook of the react redux library.
 
 
 ```js
@@ -1082,7 +1082,7 @@ const App = () => {
 ```
 
 <!-- <i>useSelector</i> saa parametrikseen funktion, joka hakee tai valitsee (engl. select) tarvittavan datan redux-storesta. Tarvitsemme nyt kaikki muistiinpanot, eli selektorifunktiomme palauttaa koko staten, eli on muotoa  -->
-<i>useSelector</i> receives a function as a paramter. The function either searches for or selects data from the redux-store. 
+<i>useSelector</i> receives a function as a parameter. The function either searches for or selects data from the redux store. 
 Here we need all of the notes, so our selector function returns the whole state:
 
 
@@ -1099,7 +1099,7 @@ which is a shorthand for
 }
 ```
 
-Usually selector functions are a bit more interesting, and return only selected parts of the contents of the redux-store. 
+Usually selector functions are a bit more interesting, and return only selected parts of the contents of the redux store. 
 We could for example return only notes marked as important:
 
 ```js
@@ -1140,7 +1140,7 @@ export default NewNote
 Unlike in the React code we did without Redux, the event handler for changing the state of the app (which now lives in Redux) has been moved away from the <i>App</i> to a child component. The logic for changing the state in Redux is still neatly separated from the whole React part of the application. 
 
 <!-- Eriytetään vielä muistiinpanojen lista ja yksittäisen muistiinpanon esittäminen omiksi komponenteikseen (jotka molemmat sijoitetaan tiedostoon <i>Notes.js</i>): -->
-We'll also separate the list of notes and displaying a single note into their own components (which will both be placed in the <i>Notes.js</i> file ):
+We'll also separate the list of notes and displaying a single note into their own components (which will both be placed in the <i>Notes.js</i> file):
 
 ```js
 import React from 'react'
@@ -1195,7 +1195,7 @@ const App = () => {
 }
 ```
 
-<i>Note</i>, responsible for rendering a single note, is very simple, and is not aware that the event handler it gets as props dispatches an action. These kind of components are called [presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) in React terminology. 
+<i>Note</i>, responsible for rendering a single note, is very simple, and is not aware that the event handler it gets as props dispatches an action. These kinds of components are called [presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) in React terminology. 
 
 
 <i>Notes</i>, on the other hand, is a [container](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) component, as it contains some application logic: it defines what the event handlers of the <i>Note</i> components do and coordinates the configuration of <i>presentational</i> components, that is, the <i>Note</i>s.
@@ -1238,7 +1238,7 @@ After completing these exercises, your application should look like this:
 #### 6.3: anecdotes, step1
 
 
-Implement the functionality for voting anecdotes. The amount of votes must be saved to a Redux-store.
+Implement the functionality for voting anecdotes. The amount of votes must be saved to a Redux store.
 
 #### 6.4: anecdotes, step2
 
@@ -1256,7 +1256,7 @@ Make sure that the anecdotes are ordered by the number of votes.
 #### 6.6: anecdotes, step4
 
 
-If you haven't done so already, separate the creation of action-objects to [action creator](https://redux.js.org/basics/actions#action-creators)-functions and place them in the <i>src/reducers/anecdoteReducer.js</i> file, so do like we have been doing since the chapter [action creators](/en/part6/flux_architecture_and_redux#action-creators).
+If you haven't done so already, separate the creation of action objects to [action creator](https://redux.js.org/basics/actions#action-creators) functions and place them in the <i>src/reducers/anecdoteReducer.js</i> file, so do like we have been doing since chapter [action creators](/en/part6/flux_architecture_and_redux#action-creators).
 
 #### 6.7: anecdotes, step5
 
