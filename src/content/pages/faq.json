@@ -1,5 +1,11 @@
 {
-  "fi": [
+  "fi": [ 
+    {
+      "title": "Ilmestyykö kurssista uusi versio 2022?",
+      "text": [
+        "Kyllä, uusi versio ilmestyy 15.3.2022.<br><br>Uusi versio ei tule poikkeamaan radikaalisti nykyisestä. <br><br>Vuoden 2021 versiota voi laajentaa 2022 versiossa <a href='/osa0/yleista#aiemmin-suoritetun-kurssin-taydentaminen'>tämän</a> ohjeen mukaisesti."
+      ]
+    },    
     {
       "title": "Miten kurssille ilmoittaudutaan?",
       "text": [
@@ -57,6 +63,12 @@
   ],
   "en": [
     {
+      "title": "Will there be a new course 2022?",
+      "text": [
+        "Yes, the new version of the course will start 15.3.2022.<br><br>There won't be major changes in the course content.<br><br> The 2021 version can be expanded in the 2022 version, see more <a href='/en/part0/general_info#expanding-on-a-previously-completed-course'>here</a>. "
+      ]
+    },
+    {
       "title": "How do I sign up for the course?",
       "text": [
         "You don't have to sign up until you want to do the course exam. The exam is done in the Moodle-system of the Open University. You can find more information <a href='/en/part0/general_info#grading'>here</a>. <br><br>Please note that only persons with Finnish social security number can take part in exams and get official ECTS credits. <br><br>For the course certificate signup or Finnish social security number are not needed."
@@ -65,7 +77,7 @@
     {
       "title": "How many credits is the course?",
       "text": [
-        "The course is 5-13 ECTS credits <a href='/en/part0/general_info#grading'>depending on the amount of returned exercises</a>. After completing the course you can continue to deepen your knowledge on the subject matter by doing the 1-10 ECTS credit <a href='/en/part0/general_info#full-stack-project'>Full Stack project</a>. <br><br>Please note that only persons with Finnish social security number can get official ECTS credits. <br><br>For the course certificate signup or Finnish social security number are not needed."
+        "The course is 5-14 ECTS credits <a href='/en/part0/general_info#grading'>depending on the amount of returned exercises</a>. After completing the course you can continue to deepen your knowledge on the subject matter by doing the 1-10 ECTS credit <a href='/en/part0/general_info#full-stack-project'>Full Stack project</a>. <br><br>Please note that only persons with Finnish social security number can get official ECTS credits. <br><br>For the course certificate signup or Finnish social security number are not needed."
       ]
     },
     {
@@ -139,7 +151,7 @@
     {
       "title" : "¿Cuántos créditos tiene el curso?",
       "text" : [
-        "El curso es de 5-13 créditos ECTS <a href='/en/part0/general_info#grading'> dependiendo de la cantidad de ejercicios devueltos </a>. Después de completar el curso, puede continuar profundizando sus conocimientos sobre el tema importa haciendo <a href='/en/part0/general_info#full-stack-project'>proyecto Full Stack</a> por créditos ECTS 1-10. Tenga en cuenta que solo las personas con número de seguridad social finlandés pueden obtener créditos ECTS oficiales. Para el certificado del curso, no se necesita registro ni número de seguro social finlandés."
+        "El curso es de 5-14 créditos ECTS <a href='/en/part0/general_info#grading'> dependiendo de la cantidad de ejercicios devueltos </a>. Después de completar el curso, puede continuar profundizando sus conocimientos sobre el tema importa haciendo <a href='/en/part0/general_info#full-stack-project'>proyecto Full Stack</a> por créditos ECTS 1-10. Tenga en cuenta que solo las personas con número de seguridad social finlandés pueden obtener créditos ECTS oficiales. Para el certificado del curso, no se necesita registro ni número de seguro social finlandés."
       ]
     },
     {
@@ -219,7 +231,7 @@
     {
       "title": "这门课多少学分呢？",
       "text": [
-        "该课程为5-13个ECTS学分，这<a href='/zh/part0/general_info#grading'>取决于您提交的练习次数</a>。 完成课程后，您可以通过进行<a href='/zh/part0/general_info#full-stack-project'> Full Stack项目</a>来加深对课程内容的了解，从而获得1-10 ECTS学分。 <br><br>请注意，只有具有芬兰社保号码的人才能获得ECTS官方积分。 <br><br>对于课程证书，不需要注册或芬兰社保号码。"
+        "该课程为5-14个ECTS学分，这<a href='/zh/part0/general_info#grading'>取决于您提交的练习次数</a>。 完成课程后，您可以通过进行<a href='/zh/part0/general_info#full-stack-project'> Full Stack项目</a>来加深对课程内容的了解，从而获得1-10 ECTS学分。 <br><br>请注意，只有具有芬兰社保号码的人才能获得ECTS官方积分。 <br><br>对于课程证书，不需要注册或芬兰社保号码。"
       ]
     },
     {
